@@ -152,19 +152,17 @@ cognition.
 - A dataset where the model beats accuracy, which would need a task on which
   accuracy is near ceiling and all the information is in the timing.
 
-## Reproduce
+## Sources
 
-```bash
-pip install -r requirements.txt
-python src/pinn.py         # solve the equation once, for all parameters
-python src/validate.py     # check it against the exact series
-python src/study.py        # recovery, then fit every child
-python src/added_value.py  # does it beat counting correct answers
-python src/misfit.py       # how bad is the fit, and is pooling to blame
-python src/figures.py
-```
+Data: OpenNeuro **ds002424**, working memory and reward in children with and
+without ADHD — 79 children, trial-level onset, accuracy and response time.
+Only the behavioural event files are used.
 
-Sources and every constant are in `docs/references.md`.
+Model: Ratcliff (1978) for the two-boundary accumulation model; Navarro & Fuss
+(2009) for the exact first-passage density used as the reference the solver is
+checked against. The probability of a correct response from the midpoint,
+sigmoid(v·a), is the standard gambler's-ruin result and is what lets accuracy
+identify the drift-boundary product.
 
 ## Contact
 
